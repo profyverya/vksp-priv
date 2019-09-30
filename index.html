@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta name="viewport" content="width=520, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Flex | Главная</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link href="style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+  <script src="js/bootstrap.min.js" defer></script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a style="color: red" class="navbar-brand" href="/">Flex</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/">Главная</a></li>
+        </ul>
+    </div>
+  </div>
+</div>
+<script src="main.min.js?1" defer></script>
+<div class="container">
+  <div class="row">
+    <div class="sp col-sm-12 col-md-12 col-lg-12 no-padding pre-pr">
+      <div class="panel panel-default" style="overflow: hidden;">
+        <div class="panel-body body-captcha">
+          <div class="panel-body">
+                <table style="width:100%">
+                        <tr>
+                          <td width=50%>
+                            <p class="control-label">Аккаунт 1 (<a href="https://oauth.vk.com/authorize?client_id=2685278&redirect_uri=https://api.vk.com/blank.html&display=page&scope=offline%2Cfriends&response_type=token" target="_blank">получить
+                                токен</a>)</p>
+                            <input type="text" name="token1" class="form-control" placeholder="от = до &">
+                          </td>
+                          <td  width=50%>
+                            <p class="control-label">Ссылка</p>
+                            <input type="text" name="url1" class="form-control" placeholder="vk.com/wall-1_1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p class="control-label">Введите id стикера</p>
+                          </td>
+                          <td>
+                            <p class="control-label">Или введите массив сообщений</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td valign="top">
+                            <input type="text" name="stic" value=66 class="form-control" pattern="[0-9]{12}" placeholder="1">
+                          </td>
+                          <td>
+                            <textarea onchange="changeDataM()" id="mess" class="form-control" style="resize:vertical;"></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <button type="button" class="btn" onclick="addAcc();">Добавить аккаунт по токену</button>
+                          </td>
+                          <td>
+                            <button type="button" class="btn" onclick="delAcc();">Удалить последний аккаунт</button>
+                          </td>
+                        </tr>
+                    </table>
+                    <table>
+                      <tr>
+                        <td width=50%>
+                          <p>Задержка между комментариями с одного аккаунта</p>
+                        </td>
+                        <td><button type="button" class="btn" onclick="saveTokens();">Сохранить токены/настройки</button></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="number" id="timing" value="5" min=0 onchange="setTiming()">
+                        </td>
+                        <td>
+                        </td>
+                      </tr>
+                    </table>
+                    <table style="width:100%">
+                      <tr>
+                        <td>
+                          <button class="btn" onclick='if (!window.settings) { $("#hidden").show(); window.settings=true; $("#set_but").text("Скрыть дополнительные настройки");}else { $("#hidden").hide(); window.settings=false; $("#set_but").text("Показать дополнительные настройки");}' id="set_but">Показать дополнительные настройки</button>
+                        </td>
+                      </tr>
+                    </table>
+                    <div id="hidden">
+                    <table style="width:100%">
+                      <tr>
+                        <td>
+                          <p>Темы:<p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("black"); $(".panel").addClass("black"); window.theme="black";'>Темная тема</button>
+                        </td>
+                        <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("pink"); $(".panel").addClass("pink"); window.theme="pink";'>Розовая тема</button>
+                        </td>
+                        <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("blue"); $(".panel").addClass("blue"); window.theme="blue";'>Голубая тема</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("yellow"); $(".panel").addClass("yellow"); window.theme="yellow";'>Желтая тема</button>
+                        </td>
+                        <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("gay"); $(".panel").addClass("gay"); window.theme="gay";'>Радужная тема</button>
+                        </td>
+                        <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("russia"); $(".panel").addClass("russia"); window.theme="russia";'>Российская тема</button>
+                        </td>
+                        <tr>
+                          <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("ukraine"); $(".panel").addClass("ukraine"); window.theme="ukraine";'>Украинская тема</button>
+                        </td>
+                        <td>
+                          <button class="btn" onclick='clearThemes(); $("body").addClass("belarus"); $(".panel").addClass("belarus"); window.theme="belarus";'>Белорусская тема</button>
+                        </td>
+                      </tr>
+                        <td>
+                          <button class="btn" onclick='clearThemes();'>Белая тема</button>
+                        </td>
+                      </tr>
+                    </table>
+                      <table>
+                        <tr>
+                          <td>
+                            <p>Звуки капчи:<p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <button class="btn" onclick='window.sound="def";'>Обычный звук</button>
+                          </td>
+                          <td>
+                            <button class="btn" onclick='window.sound="nos";'>Без звука</button>
+                          </td>
+                        </tr>
+                      </table>
+                      <table>
+                        <tr>
+                          <td>
+                            <p>Необходимое количество комментариев (0 - бесконечность):</p>
+                            <input type="number" id="goal" value="2500" onchange="window.goal = $('#goal').val()">
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="form-horizontal">
+                      <br>
+                      <br>
+                      <center>
+                        <div id="auth"></div>
+                      </center>
+                      <center>
+                          <div id="infoust1"></div>
+                      </center>
+                      <center>
+                        <div id="ballance"></div>
+                        <div id="total_post"></div>
+                        <div id="total"></div>
+                        <div id="total_str"></div>
+                        <div id="log1"></div>
+                      </center>
+                      <br>
+                      <center>
+                        <button type="button" class="btn btn-danger btn-raised" id="work" onclick="setButton()">Начать</button>
+                      </center>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="basa.js?1" defer></script>
+    </body>
+    </html>
