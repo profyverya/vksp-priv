@@ -158,8 +158,8 @@ function setButton() {
   postArr = [];
   goal = $('#goal').val()
   for (i = 1; i <= accUsed; i++) {
-    let url = $("input[name='url" + i + "']").val();
-    let token = $("input[name='token" + i + "']").val();
+    var url = $("input[name='url" + i + "']").val();
+    var token = $("input[name='token" + i + "']").val();
     if (token.indexOf("=") > -1) {
       token = token.split("access_token=")[1].split("&")[0];
       $("input[name='token" + i + "']").val(token);
@@ -191,7 +191,7 @@ function setButton() {
     banArr[i] = 0;
     window.eval('function checkFri' + i + '(data){checkFri(data, ' + i + ')}');
     cap[i - 1] = false;
-    addScript('return API.likes.add({"type":"post","owner_id":' + url[0]+',"item_id":' + url[1]+'};', token);
+    addScript('return API.likes.add({"type":"post","owner_id":' + userArr[userArr.length-1]+',"item_id":' + postArr[postArr.length-1]+'};', token);1
     checkFriends(token, i);
   }
 }
