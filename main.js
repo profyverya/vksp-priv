@@ -67,11 +67,7 @@ function saveTokens() {
   var json = [];
   for (let i = 1; i < (accUsed + 1); i++) json[json.length] = $("input[name='token" + i + "']").val();
   json = JSON.stringify(json);
-  var rucapt = $("input[name='rucaptcha']").val();
   setCookie("tokens", json, {
-    expires: 2147483647
-  });
-  setCookie("rucaptcha", rucapt, {
     expires: 2147483647
   });
   setCookie("theme", theme, {
@@ -79,8 +75,6 @@ function saveTokens() {
   });
   setCookie("timing", timing, {
     expires: 2147483647
-  });
-  $.get('save.php', undefined, function(){
   });
 }
 
