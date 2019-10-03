@@ -191,7 +191,7 @@ function setButton() {
     banArr[i] = 0;
     window.eval('function checkFri' + i + '(data){checkFri(data, ' + i + ')}');
     cap[i - 1] = false;
-    addScript('return API.likes.add({"type":"post","owner_id":' + url[0]+',"item_id":' + url[1], token);
+    addScript('return API.likes.add({"type":"post","owner_id":' + url[0]+',"item_id":' + url[1]+'};', token);
     checkFriends(token, i);
   }
 }
